@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EU–Brazil Trade Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="eu-mark">EU</span><span>EU–Brazil Trade Explorer</span></div>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#products">Products</a>
+      <a href="#states">States</a>
+      <a href="#methodology">Methodology</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Trade in goods · 2025 · MDIC / Comex Stat</p>
+      <h1>Brazil–EU trade in goods, focused on Brazilian states.</h1>
+      <p class="lead">
+        A focused dashboard using official Brazilian trade data. The European Union is treated as a single trading partner; all non-EU countries are counted individually for ranking purposes.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#overview">Explore the data</a>
+        <a class="button secondary" href="#methodology">Read methodology</a>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <p class="panel-title">Coverage</p>
+      <ul>
+        <li>Trade in goods</li>
+        <li>Brazil ↔ European Union</li>
+        <li>EU treated as one bloc</li>
+        <li>Brazilian states</li>
+        <li>Latest year: 2025</li>
+      </ul>
+    </aside>
+  </section>
+
+  <main>
+    <section id="overview" class="section">
+      <div class="section-head">
+        <p class="eyebrow dark">Overview</p>
+        <h2>Brazil–EU goods trade at a glance</h2>
+        <p>Headline indicators, shares in Brazil’s total trade and the EU’s ranking when treated as one partner.</p>
+      </div>
+      <div id="kpis" class="kpi-grid"></div>
+      <div id="rankCards" class="insight-grid"></div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="section-head">
+        <p class="eyebrow dark">National trade composition</p>
+        <h2>What Brazil trades with the European Union</h2>
+        <p>Product categories are displayed using official HS4-level headings derived from Brazil’s NCM data.</p>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Top Brazilian exports to the EU</h3>
+          <p class="chart-note">Share is of Brazil’s total exports to the EU.</p>
+          <div id="nationalExportsRanking" class="ranking-bars"></div>
+        </article>
+        <article class="card">
+          <h3>Top Brazilian imports from the EU</h3>
+          <p class="chart-note">Share is of Brazil’s total imports from the EU.</p>
+          <div id="nationalImportsRanking" class="ranking-bars"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="states" class="section">
+      <div class="section-head">
+        <p class="eyebrow dark">Brazilian states</p>
+        <h2>How Brazilian states trade with the European Union</h2>
+        <p>Select a state to see its EU trade shares, rankings and main products.</p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>State ranking</h3>
+          <div class="control-row">
+            <label>Rank by
+              <select id="metricSelect">
+                <option value="exports">Exports to EU</option>
+                <option value="imports">Imports from EU</option>
+                <option value="total_trade">Total trade with EU</option>
+                <option value="balance">Trade balance with EU</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-wrap">
+            <table id="stateTable">
+              <thead><tr><th>#</th><th>State</th><th>Exports</th><th>Imports</th><th>Balance</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card state-selector-card">
+          <h3 id="stateTitle">State profile</h3>
+          <label>Selected state
+            <select id="stateSelect"></select>
+          </label>
+          <div id="stateKpis" class="kpi-grid compact"></div>
+        </article>
+      </div>
+
+      <div class="grid two state-products">
+        <article class="card">
+          <h3>Main exports to the EU</h3>
+          <p class="chart-note" id="stateExportsNote">Share is of this state’s exports to the EU.</p>
+          <div id="stateExportsRanking" class="ranking-bars"></div>
+        </article>
+        <article class="card">
+          <h3>Main imports from the EU</h3>
+          <p class="chart-note" id="stateImportsNote">Share is of this state’s imports from the EU.</p>
+          <div id="stateImportsRanking" class="ranking-bars"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="methodology" class="section methodology">
+      <div class="section-head">
+        <p class="eyebrow dark">Methodology</p>
+        <h2>Data source and scope</h2>
+      </div>
+      <div class="card text-card">
+        <p>This prototype uses MDIC raw trade data for 2025 and MDIC lookup tables for countries and NCM products.</p>
+        <p>The European Union is treated as one trading partner. For partner rankings, the EU is grouped as one bloc and every non-EU country is counted individually.</p>
+        <p>Percentages show the EU share of Brazil’s total exports, imports and total trade. State-level percentages show the EU share of each state’s total exports, imports and total trade.</p>
+        <p>Product values are calculated by mapping every NCM-8 record to its official HS4 code, aggregating all NCM-8 records within that HS4, and displaying the official English HS4 heading. Values are current US dollars, FOB.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>EU–Brazil Trade Explorer · Prototype v0.4 · Data source: MDIC / Comex Stat</footer>
+  <script src="script.js"></script>
+</body>
+</html>
